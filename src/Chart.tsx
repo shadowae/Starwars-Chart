@@ -9,7 +9,6 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import DemoData from './DemoData';
 import DataSanitise from "./DataSanitise";
 
 ChartJS.register(
@@ -20,6 +19,7 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+const cleanData = DataSanitise;
 
 export const options = {
     responsive: true,
@@ -32,18 +32,29 @@ export const options = {
             text: 'Starwars Species Chart',
         },
     },
+    scale:{
+        y: {
+            suggestedMin: 0,
+            suggestedMax: cleanData.reduce((max, item) => Math.max(max, parseFloat(item.average_height)), -Infinity) + 20,
+            type: 'category',
+            offset: true,
+            grid: {
+                offset: true
+            },
+            ticks: {
+                stepSize: 10 // Set the interval of the x-axis to 10
+            }
+        }
+    }
 };
 
-const cleanData = DataSanitise;
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const labels2 = cleanData.map((item) => item.name);
+const labels = cleanData.map((item) => item.name);
 // Convert item.average_height to a number and then map it out as data points for the bar chart.
 const dataHeight = cleanData.map((item) => parseInt(item.average_height));
-console.log(labels2)
-console.log(dataHeight)
+
 export const data = {
-    labels: labels2,
+    labels: labels,
     datasets: [
         {
             label: 'Average Height',
