@@ -1,5 +1,5 @@
 import "./styles.css";
-import ChartApp from "./Chart";
+import {ChartApp} from "./Chart";
 
 export default function App() {
   return (
