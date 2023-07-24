@@ -22,9 +22,22 @@ ChartJS.register(
     Legend
 );
 const cleanData = DataSanitise;
+let delayed: boolean;
 
 export const options = {
     responsive: true,
+    animation: {
+        onComplete: () => {
+            delayed = true;
+        },
+        delay: (context: { type: string; mode: string; dataIndex: number; datasetIndex: number; }) => {
+            let delay = 0;
+            if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                delay = context.dataIndex * 300 + context.datasetIndex * 100;
+            }
+            return delay;
+        },
+    },
     plugins: {
         legend: {
             position: 'bottom' as const,
@@ -62,19 +75,21 @@ export const data = {
         {
             label: 'Average Height',
             data: dataHeight,
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            backgroundColor: 'rgba(255,99,132,0.5)',
+            borderWidth: 2,
+            borderRadius: 75,
+            borderColor: 'rgb(255,99,132)',
         },
         {
             label: 'Average Lifespan',
             data: dataLifespan,
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            backgroundColor: 'rgba(53,162,235,0.5)',
+            borderWidth: 2,
+            borderRadius: 50,
+            borderColor: 'rgb(53,162,235)',
         },
     ],
 };
-
-// import the DemoData object and to map out the names as labels for the bar chart and map out the average_height as data points for the bar chart.
-
-
 
 export function ChartApp() {
     const [speciesData, setSpeciesData] = useState<SpeciesType[]>([]);
