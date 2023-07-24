@@ -1,12 +1,12 @@
 import DemoData from "./DemoData";
 
-const DataSanitise = DemoData.filter((item) => {
-    // do not include items with no numerical average height data
+const DataSanitise = DemoData.map((item) => {
+    // swap out average_height parameter in item to 0 if NaN
 
     console.log(parseInt(item.average_height));
-    if (!isNaN(parseInt(item.average_height))) {
-        return true;
-    }
+    if (isNaN(parseInt(item.average_height))) {
+        return {...item, average_height: '0'};
+    } return item;
 })
 
 export  default  DataSanitise;
