@@ -10,8 +10,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import DataSanitise from "./DataSanitise";
-import {fetchAllSpeciesData} from "./API/getSpecies";
-import SpeciesType from "./types/SpeciesType";
 
 ChartJS.register(
     CategoryScale,
@@ -65,7 +63,6 @@ export const options = {
 
 
 const labels = cleanData.map((item) => item.name);
-// Convert item.average_height to a number and then map it out as data points for the bar chart.
 const dataHeight = cleanData.map((item) => parseInt(item.average_height));
 const dataLifespan = cleanData.map((item) => parseInt(item.average_lifespan));
 
@@ -91,19 +88,6 @@ export const data = {
     ],
 };
 
-export function ChartApp() {
-    const [speciesData, setSpeciesData] = useState<SpeciesType[]>([]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const consolidatedData = await fetchAllSpeciesData();
-            setSpeciesData(consolidatedData);
-        }
-
-        // fetchData();
-    }, []);
-
-    // Once all data is fetched, you will have the accumulated speciesData array containing all results
-    console.log(speciesData);
+export function SpeciesBarChart() {
     return <Bar options={options} data={data} />;
 }

@@ -1,10 +1,10 @@
 import "./styles.css";
-import {ChartApp} from "./Chart";
+import Species from "./Species";
 
 export default function App() {
   return (
     <div className="App">
-      <ChartApp />
+        <Species/>
     </div>
   );
 }

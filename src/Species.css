@@ -1,0 +1,11 @@
+.species-page {
+    /* Add any styles for the 'species-page' container here */
+    display: flex; /* Use flexbox to create a flex container */
+    flex-direction: column;
+    align-items: center; /* Center the items along the axis (horizontal centering) */
+}
+
+.species-page-bar {
+    width: 90%;
+    border: 10px solid aquamarine;
+}
