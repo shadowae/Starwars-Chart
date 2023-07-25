@@ -7,13 +7,13 @@ interface SpeciesType {
     hair_colors: string,
     eye_colors: string,
     average_lifespan: string,
-    homeworld: URL,
+    homeworld: string | null,
     language: string,
-    people: URL[],
-    films: URL[],
+    people: string[],
+    films: string[],
     created: string,
     edited: string,
-    url: URL
+    url: string
 }
 
 export default SpeciesType;
