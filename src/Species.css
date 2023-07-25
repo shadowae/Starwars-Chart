@@ -5,7 +5,7 @@
     align-items: center; /* Center the items along the axis (horizontal centering) */
 }
 
-.species-page-bar {
+.species-page-chart {
     width: 90%;
     border: 10px solid aquamarine;
 }
