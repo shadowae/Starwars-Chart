@@ -5,6 +5,10 @@ import SpeciesType from "./types/SpeciesType";
 import {fetchAllSpeciesData} from "./API/getSpecies";
 import {SpeciesBarChart} from "./SpeciesBarChart";
 import './Species.css'
+import SpeciesPieChart from "./SpeciesPieChart";
+import DataSanitise from "./DataSanitise";
+import GenericPieChart from "./GenericPieChart";
+import {getClassificationOptions, getDesignationOptions} from "./utils/getOptions";
 
 const Species = () => {
     const [speciesData, setSpeciesData] = useState<SpeciesType[]>([]);
@@ -17,17 +21,19 @@ const Species = () => {
         // fetchData();
     }, []);
 
-    // Once all data is fetched, you will have the accumulated speciesData array containing all results
-    console.log(speciesData);
-
-    // Return an object of div with sub divs for bar chart and 2 pie chart
-
     return (
         <div className={"species-page"}>
             <h1>Species Page</h1>
-            <div className={'species-page-bar'}>
+            <div>
+                <GenericPieChart dataSet={DataSanitise} selectionOptions={getDesignationOptions(DataSanitise)} path={['designation']}/>
+            </div>
+            <div className={'species-page-chart'}>
                 <SpeciesBarChart />
             </div>
+            <div className={'species-page-chart'}>
+                <SpeciesPieChart speciesData={DataSanitise} />
+            </div>
+
         </div>
     )
 }
