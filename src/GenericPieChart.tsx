@@ -2,18 +2,18 @@
 import React, { Key, useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import SpeciesType from "./types/SpeciesType";
+import {getOptions} from "./utils/getOptions";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface GenericPieChartProps {
     dataSet: any;
-    selectionOptions: any;
     path: any
 }
 
 function GenericPieChart(props: GenericPieChartProps) {
-    const {dataSet, selectionOptions, path} = props;
+    const {dataSet, path} = props;
+    const selectionOptions = getOptions(dataSet, path);
     const [selectedOption, setSelectedOption] = useState(selectionOptions[0]);
     const [selectedData, setSelectedData] = useState(dataSet);
 

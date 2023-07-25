@@ -8,7 +8,6 @@ import './Species.css'
 import SpeciesPieChart from "./SpeciesPieChart";
 import DataSanitise from "./DataSanitise";
 import GenericPieChart from "./GenericPieChart";
-import {getClassificationOptions, getDesignationOptions} from "./utils/getOptions";
 
 const Species = () => {
     const [speciesData, setSpeciesData] = useState<SpeciesType[]>([]);
@@ -25,7 +24,7 @@ const Species = () => {
         <div className={"species-page"}>
             <h1>Species Page</h1>
             <div>
-                <GenericPieChart dataSet={DataSanitise} selectionOptions={getDesignationOptions(DataSanitise)} path={['designation']}/>
+                <GenericPieChart dataSet={DataSanitise} path={['language']}/>
             </div>
             <div className={'species-page-chart'}>
                 <SpeciesBarChart />
