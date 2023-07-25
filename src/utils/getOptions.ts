@@ -18,4 +18,19 @@ const getDesignationOptions = (rawData: SpeciesType[]) => {
     return Array.from(new Set(allDesignations));
 }
 
-export { getLanguageOptions, getClassificationOptions, getDesignationOptions };
+// Generic function to extract unique options from the speciesData array given path variable
+const getGenericOptions = (rawData: SpeciesType[], path: string) => {
+    const allOptions = rawData.flatMap((species: any) => species[path]);
+    return Array.from(new Set(allOptions));
+}
+
+const getOptions = (rawData: SpeciesType[], path: string) => {
+    switch (path) {
+        case 'language':
+            return getLanguageOptions(rawData);
+        default:
+            return getGenericOptions(rawData, path);
+    }
+}
+
+export { getOptions };
