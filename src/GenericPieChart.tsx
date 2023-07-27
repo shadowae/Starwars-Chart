@@ -11,10 +11,11 @@ interface GenericPieChartProps {
     dataSet: any;
     path: any;
     selectionMethod: 'dropdown' | 'buttons';
+    label?: string;
 }
 
 function GenericPieChart(props: GenericPieChartProps) {
-    const {dataSet, path, selectionMethod} = props;
+    const {dataSet, path, selectionMethod, label} = props;
     const selectionOptions = getOptions(dataSet, path);
     const [selectedOption, setSelectedOption] = useState(selectionOptions[0]);
     const [selectedData, setSelectedData] = useState(dataSet);
@@ -82,7 +83,7 @@ function GenericPieChart(props: GenericPieChartProps) {
     return (
         <div className="pie-chart-container">
             <div className="pie-chart-header">
-                <h1>{selectedData.label}</h1>
+                <h3>{label}</h3>
                 {selectionMethod === 'dropdown' ? renderDropdown() : renderButtons()}
             </div>
             <div className="pie-chart-content">
