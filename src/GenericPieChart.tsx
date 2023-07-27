@@ -3,6 +3,7 @@ import React, { Key, useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import {getOptions} from "./utils/getOptions";
+import './GenericPieChart.css'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
