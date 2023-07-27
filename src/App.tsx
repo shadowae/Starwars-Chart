@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Import 'Routes' from react-router-dom
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./styles.css";
+import Home from "./Home";
 import Species from "./Species";
-import Home from "./Home"; // Replace "Home" with the component you want to show on the home page
+import People from './People'
 
 export default function App() {
     return (
@@ -16,12 +17,16 @@ export default function App() {
                         <li>
                             <Link to="/species">Species</Link>
                         </li>
+                        <li>
+                            <Link to="/people">People</Link>
+                        </li>
                     </ul>
                 </nav>
                 
                 {/* Use 'Routes' to wrap multiple 'Route' components */}
                 <Routes>
                     <Route path="/species" element={<Species />} />
+                    <Route path="/people" element={<People />} />
                     <Route path="/" element={<Home />} />
                 </Routes>
             </div>

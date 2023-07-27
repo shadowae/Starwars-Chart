@@ -1,6 +1,6 @@
-import DemoData from "./DemoData";
+import DemoData from "../mock/DemoData";
 import {isNullOrUndef} from "chart.js/helpers";
-import SpeciesType from "./types/SpeciesType";
+import SpeciesType from "../types/SpeciesType";
 
 const DataSanitise = DemoData.map((item) => {
     const updatedData = {...item};
