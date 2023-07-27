@@ -8,7 +8,11 @@ const DataSanitise = DemoData.map((item) => {
     if (isNaN(parseInt(item.average_height))) {
         updatedData.average_height = '0';
     }
-
+    // cleanup on language parameter when its Galactic Basic in various form
+    if (item.language === 'Galatic Basic' || item.language === 'galactic basic' || item.language === 'Galactic basic') {
+        updatedData.language = 'Galactic Basic';
+    }
+    
     if(isNullOrUndef(item.homeworld)) {
         updatedData.homeworld = '';
     }
@@ -17,6 +21,8 @@ const DataSanitise = DemoData.map((item) => {
     if(item.classification === 'mammals') {
         updatedData.classification = 'mammal';
     }
+    
+
     return updatedData;
 })
 
