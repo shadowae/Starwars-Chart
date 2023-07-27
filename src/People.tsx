@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {fetchAllPeopleData} from "./API/getPeople";
 import useStarwarsStore from "./Zustand/StarwarsStore";
+import Accordion from "./components/Accordion";
 
 const People = () => {
     const peopleData = useStarwarsStore(state => state.people);
@@ -16,7 +17,7 @@ const People = () => {
             <h1>Star Wars - People</h1>
             <ul>
                 {peopleData.map((person: any) => (
-                    <li key={person.id}>{person.name}</li>
+                    <Accordion header={person.name} content={<div>Height: {person.height}</div>}/>
                 ))}
             </ul>
         </div>
