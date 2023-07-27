@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {fetchAllSpeciesData} from "./API/getSpecies";
 import {SpeciesBarChart} from "./SpeciesBarChart";
 import './Species.css'
-import GenericPieChart from "./GenericPieChart";
+import GenericPieChart from "./components/GenericPieChart";
 import useStarwarsStore from "./Zustand/StarwarsStore";
 const Species = () => {
     const speciesData = useStarwarsStore(state => state.species);
