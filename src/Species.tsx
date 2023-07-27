@@ -8,14 +8,13 @@ import './Species.css'
 import SpeciesPieChart from "./SpeciesPieChart";
 import DataSanitise from "./DataSanitise";
 import GenericPieChart from "./GenericPieChart";
-
+import useSpeciesStore from "./Zustand/SpeciesState";
 const Species = () => {
-    const [speciesData, setSpeciesData] = useState<SpeciesType[]>([]);
-
+    const speciesData = useSpeciesStore(state => state.species);
     useEffect(() => {
         async function fetchData() {
             const consolidatedData = await fetchAllSpeciesData();
-            setSpeciesData(consolidatedData);
+            // setSpeciesData(consolidatedData);
         }
         // fetchData();
     }, []);
@@ -24,13 +23,13 @@ const Species = () => {
         <div className={"species-page"}>
             <h1>Species Page</h1>
             <div>
-                <GenericPieChart dataSet={DataSanitise} path={['language']}/>
+                <GenericPieChart dataSet={speciesData} path={['language']}/>
             </div>
             <div className={'species-page-chart'}>
                 <SpeciesBarChart />
             </div>
             <div className={'species-page-chart'}>
-                <SpeciesPieChart speciesData={DataSanitise} />
+                <SpeciesPieChart speciesData={speciesData} />
             </div>
 
         </div>
