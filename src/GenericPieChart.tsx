@@ -9,11 +9,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface GenericPieChartProps {
     dataSet: any;
-    path: any
+    path: any;
+    selectionMethod: 'dropdown' | 'buttons';
 }
 
 function GenericPieChart(props: GenericPieChartProps) {
-    const {dataSet, path} = props;
+    const {dataSet, path, selectionMethod} = props;
     const selectionOptions = getOptions(dataSet, path);
     const [selectedOption, setSelectedOption] = useState(selectionOptions[0]);
     const [selectedData, setSelectedData] = useState(dataSet);
@@ -46,22 +47,43 @@ function GenericPieChart(props: GenericPieChartProps) {
             animateRotate: true,
         },
     };
+    
+    const renderDropdown = () => (
+        <div className="pie-chart-selection-options">
+            <label htmlFor="option-select">Select an Option:</label>
+            <select
+                id="option-select"
+                value={selectedOption}
+                onChange={(e) => setSelectedOption(e.target.value)}
+            >
+                {selectionOptions.map((option: string | undefined) => (
+                    <option key={option} value={option}>
+                        {option}
+                    </option>
+                ))}
+            </select>
+        </div>
+    )
 
+    const renderButtons = () => (
+        <div className="pie-chart-selection-options">
+            {selectionOptions.map((option: Key | null | undefined) => (
+                <button
+                    key={option}
+                    onClick={() => setSelectedOption(option)}
+                    className={selectedOption === option ? "selected" : ""}
+                >
+                    {option}
+                </button>
+            ))}
+        </div>
+    );
+    
     return (
         <div className="pie-chart-container">
             <div className="pie-chart-header">
                 <h1>{selectedData.label}</h1>
-                <div className="pie-chart-selection-options">
-                    {selectionOptions.map((option: Key | null | undefined) => (
-                        <button
-                            key={option}
-                            onClick={() => setSelectedOption(option)}
-                            className={selectedOption === option ? "selected" : ""}
-                        >
-                            {option}
-                        </button>
-                    ))}
-                </div>
+                {selectionMethod === 'dropdown' ? renderDropdown() : renderButtons()}
             </div>
             <div className="pie-chart-content">
                 <Pie

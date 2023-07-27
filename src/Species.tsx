@@ -1,12 +1,10 @@
 // Create a functional class called Species
 
-import {useEffect, useState} from "react";
-import SpeciesType from "./types/SpeciesType";
+import {useEffect} from "react";
 import {fetchAllSpeciesData} from "./API/getSpecies";
 import {SpeciesBarChart} from "./SpeciesBarChart";
 import './Species.css'
 import SpeciesPieChart from "./SpeciesPieChart";
-import DataSanitise from "./DataSanitise";
 import GenericPieChart from "./GenericPieChart";
 import useSpeciesStore from "./Zustand/SpeciesState";
 const Species = () => {
@@ -23,7 +21,9 @@ const Species = () => {
         <div className={"species-page"}>
             <h1>Species Page</h1>
             <div>
-                <GenericPieChart dataSet={speciesData} path={['language']}/>
+                <GenericPieChart dataSet={speciesData} path={['language']} selectionMethod={'dropdown'}/>
+                <GenericPieChart dataSet={speciesData} path={['classification']} selectionMethod={'buttons'}/>
+                <GenericPieChart dataSet={speciesData} path={['designation']} selectionMethod={'buttons'}/>
             </div>
             <div className={'species-page-chart'}>
                 <SpeciesBarChart />
