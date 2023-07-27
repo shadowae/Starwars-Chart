@@ -26,7 +26,7 @@ const Species = () => {
                 <GenericPieChart dataSet={speciesData} path={['designation']} selectionMethod={'buttons'}/>
             </div>
             <div className={'species-page-chart'}>
-                <SpeciesBarChart />
+                <SpeciesBarChart dataSet={speciesData}/>
             </div>
             <div className={'species-page-chart'}>
                 <SpeciesPieChart speciesData={speciesData} />
