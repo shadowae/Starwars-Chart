@@ -5,6 +5,7 @@ import DataSanitise from "../utils/DataSanitise";
 import PeopleDemoData from "../mock/PeopleDemoData";
 import {fetchAllPeopleData} from "../API/getPeople";
 import PeopleType from "../types/PeopleType";
+import FilmsData from "../mock/FilmsData";
 
 interface StarwarsState {
     species: SpeciesType[],
@@ -21,6 +22,7 @@ const useStarwarsStore = create<StarwarsState>()(
                     const response = await fetchAllPeopleData();
                     set({ people: await response })
                 },
+                films: FilmsData,
             }),
             {
                 name: 'starwars-storage',
