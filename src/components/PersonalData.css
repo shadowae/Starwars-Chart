@@ -1,37 +1,10 @@
-.body {
-    display: flex; /* Use flexbox to create a horizontal layout */
-}
-.identity-card {
-    background-color: #fafafa;
-    position: relative;
-    border: 1px solid #ccc; /* Add a border for the card */
-    border-radius: 5px; /* Optional: Add border radius for a rounded look */
-}
+.name {
 
-.identity-card:before {
-    /* Create a vertical line using ::before pseudo-element */
-    content: "";
-    position: absolute;
-    top: 10%; /* Adjust the top value to control the position of the line */
-    left: 50%;
-    height: 80%; /* Adjust the height to 80% of the div height */
-    border-left: 2px solid #ccc; /* Adjust the border style as needed */
-    transform: translateX(-50%);
 }
-
-.left-side,
-.right-side {
-    flex: 1; /* Allow both sides to take equal space */
-    padding: 20px; /* Add padding for spacing */
-}
-
 
 .left-side {
-    width: 50%;
-}
-
-.right-side {
-    width: 50%;
+    min-width: 30%;
+    padding: 15px 0 15px 15px;
 }
 
 .avatar {
@@ -43,7 +16,7 @@
     align-self: start;
 }
 
-.details {
+.section-header {
     text-align: start;
     font-size: 35px;
     font-weight: 800;
@@ -62,3 +35,8 @@
     text-align: start;
     font-weight: bold; /* Optional: Make the label text bold */
 }
+
+.sw-movie-image {
+    border-radius: 30px;
+}
+
