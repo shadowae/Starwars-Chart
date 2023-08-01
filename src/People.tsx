@@ -10,7 +10,7 @@ const People = () => {
     
     return (
         <Container sx={{backgroundColor: '#E5E5E5'}} maxWidth="xl">
-            <Typography variant={"h3"}>
+            <Typography variant={"h4"}>
                 Star Wars - People
             </Typography>
             {peopleData.map((person: PeopleType) => (
