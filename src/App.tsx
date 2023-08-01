@@ -38,7 +38,7 @@ export default function App() {
         
         return (
             <li>
-                <ListItemButton component={Link} to={to} selected={window.location.pathname === to}>
+                <ListItemButton onClick={() => setMenuOpen(!menuOpen)} component={Link} to={to} selected={window.location.pathname === to}>
                     {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
                     <ListItemText primary={primary} />
                 </ListItemButton>
@@ -70,11 +70,18 @@ export default function App() {
                                     open={menuOpen}
                                     onClose={() => setMenuOpen(!menuOpen)}
                                 >
-                                    <List>
-                                        <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
-                                        <ListItemLink to="/species" primary="Species" icon={<CategoryIcon />} />
-                                        <ListItemLink to="/people" primary="People" icon={<PeopleIcon />} />
-                                    </List>
+                                    <Box sx={{
+                                        backgroundColor: 'rgba(255,99,132,0.2)',
+                                    }}>
+                                        <Typography variant={"h5"} padding={'15px'}>
+                                            Star Wars Data Page
+                                        </Typography>
+                                        <List>
+                                            <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
+                                            <ListItemLink to="/species" primary="Species" icon={<CategoryIcon />} />
+                                            <ListItemLink to="/people" primary="People" icon={<PeopleIcon />} />
+                                        </List>
+                                    </Box>
                                 </Drawer>
                             </Toolbar>
                         </AppBar>
