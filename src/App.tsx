@@ -10,7 +10,7 @@ import {
     Drawer,
     IconButton,
     List,
-    ListItem,
+    ListItemButton,
     ListItemIcon, ListItemText,
     Toolbar,
     Typography
@@ -33,15 +33,15 @@ export default function App() {
         return <RouterLink ref={ref} {...itemProps} role={undefined} />;
     });
     
-    function ListItemLink(props: ListItemLinkProps) {
+    const ListItemLink = (props: ListItemLinkProps) =>{
         const { icon, primary, to } = props;
         
         return (
             <li>
-                <ListItem component={Link} to={to}>
+                <ListItemButton component={Link} to={to} selected={window.location.pathname === to}>
                     {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
                     <ListItemText primary={primary} />
-                </ListItem>
+                </ListItemButton>
             </li>
         );
     }
