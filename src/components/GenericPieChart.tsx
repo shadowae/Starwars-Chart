@@ -1,10 +1,20 @@
-// Create a function class called GenericPieChart that takes in a dataSet, selectionOptions and renders the pie chart
 import React, { Key, useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import {getOptions} from "../utils/getOptions";
 import './GenericPieChart.css'
-import {Button, ButtonGroup, Card, CardContent, CardHeader, Container} from "@mui/material";
+import {
+    Button,
+    ButtonGroup,
+    Card,
+    CardContent,
+    CardHeader,
+    Container,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select
+} from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -52,18 +62,23 @@ function GenericPieChart(props: GenericPieChartProps) {
     
     const renderDropdown = () => (
         <div className="pie-chart-selection-options">
-            <label htmlFor="option-select">Select an Option:</label>
-            <select
-                id="option-select"
-                value={selectedOption}
-                onChange={(e) => setSelectedOption(e.target.value)}
-            >
-                {selectionOptions.map((option: string | undefined) => (
-                    <option key={option} value={option}>
-                        {option}
-                    </option>
-                ))}
-            </select>
+            <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Select an Option:</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={selectedOption}
+                    label="Select an Option:"
+                    onChange={(e) => {
+                        console.log(e.target.value)
+                        setSelectedOption(e.target.value)
+                    }}
+                >
+                    {selectionOptions.map((option: string | undefined) => (
+                        <MenuItem value={option}>{option}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
         </div>
     )
 
