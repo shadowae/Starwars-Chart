@@ -97,8 +97,9 @@ function GenericPieChart(props: GenericPieChartProps) {
                 <CardHeader
                     title={label}
                     subheader={selectionMethod === 'dropdown' ? renderDropdown() : renderButtons()}
+                    titleTypographyProps={{noWrap: true, gutterBottom: true}}
                 />
-                <CardContent>
+                <CardContent sx={{border:  '1px solid #ededed', borderRadius: '10px', margin: '0.5rem'}}>
                     <Pie
                         data={pieChartData}
                         options={pieOptions}

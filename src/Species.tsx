@@ -1,5 +1,6 @@
 // Create a functional class called Species
 import {Container, Paper, Typography} from "@mui/material";
+import Stack from '@mui/material/Stack';
 import {useEffect} from "react";
 import {fetchAllSpeciesData} from "./API/getSpecies";
 import {SpeciesBarChart} from "./SpeciesBarChart";
@@ -18,17 +19,21 @@ const Species = () => {
 
     return (
         <Container sx={{backgroundColor: '#E5E5E5'}} maxWidth="xl">
-            <Typography variant={"h4"}>
-                Star Wars - Species
-            </Typography>
-                <GenericPieChart label={'Species Language Breakdown'} dataSet={speciesData} path={['language']} selectionMethod={'dropdown'}/>
-                <GenericPieChart label={'Species Classification Breakdown'} dataSet={speciesData} path={['classification']} selectionMethod={'buttons'}/>
-                <GenericPieChart label={'Species Designation Breakdown'} dataSet={speciesData} path={['designation']} selectionMethod={'buttons'}/>
-            <Container>
-                <Paper sx={{width: '90%', border: '5px dashed aquamarine'}}>
-                    <SpeciesBarChart dataSet={speciesData}/>
-                </Paper>
-            </Container>
+            <Stack spacing={3}>
+                <Typography variant={"h4"}>
+                    Star Wars - Species
+                </Typography>
+                <Stack useFlexGap spacing={1} direction={"row"}>
+                    <GenericPieChart label={'Species Language Breakdown'} dataSet={speciesData} path={['language']} selectionMethod={'dropdown'}/>
+                    <GenericPieChart label={'Species Classification Breakdown'} dataSet={speciesData} path={['classification']} selectionMethod={'buttons'}/>
+                    <GenericPieChart label={'Species Designation Breakdown'} dataSet={speciesData} path={['designation']} selectionMethod={'buttons'}/>
+                </Stack>
+                <Container>
+                    <Paper sx={{width: '90%', border: '5px dashed aquamarine', marginX: "auto"}}>
+                        <SpeciesBarChart dataSet={speciesData}/>
+                    </Paper>
+                </Container>
+            </Stack>
         </Container>
     )
 }
