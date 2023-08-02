@@ -4,6 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import {getOptions} from "../utils/getOptions";
 import './GenericPieChart.css'
+import {Button, ButtonGroup, Card, CardContent, CardHeader, Container} from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -67,34 +68,46 @@ function GenericPieChart(props: GenericPieChartProps) {
     )
 
     const renderButtons = () => (
-        <div className="pie-chart-selection-options">
+        <ButtonGroup size="small" variant="text" aria-label="outlined primary button group" sx={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
             {selectionOptions.map((option: Key | null | undefined) => (
-                <button
+                <Button
                     key={option}
                     onClick={() => setSelectedOption(option)}
-                    className={selectedOption === option ? "selected" : ""}
+                    sx={{
+                        ":hover": {
+                            bgcolor: "rgba(53,162,235,0.29)",
+                        },
+                        ...(selectedOption === option && {
+                            bgcolor: "aquamarine",
+                            ":hover": {
+                                bgcolor: "aquamarine",
+                            }
+                        })
+                    }}
                 >
                     {option}
-                </button>
+                </Button>
             ))}
-        </div>
+        </ButtonGroup>
     );
     
     return (
-        <div className="pie-chart-container">
-            <div className="pie-chart-header">
-                <h3>{label}</h3>
-                {selectionMethod === 'dropdown' ? renderDropdown() : renderButtons()}
-            </div>
-            <div className="pie-chart-content">
-                <Pie
-                    data={pieChartData}
-                    options={pieOptions}
-                    width={300}
-                    height={300}
+        <Container maxWidth={"xs"}>
+            <Card>
+                <CardHeader
+                    title={label}
+                    subheader={selectionMethod === 'dropdown' ? renderDropdown() : renderButtons()}
                 />
-            </div>
-        </div>
+                <CardContent>
+                    <Pie
+                        data={pieChartData}
+                        options={pieOptions}
+                        width={300}
+                        height={300}
+                    />
+                </CardContent>
+            </Card>
+        </Container>
     );
 }
 

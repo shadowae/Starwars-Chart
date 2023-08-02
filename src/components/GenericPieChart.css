@@ -1,11 +1,4 @@
-.pie-chart-container {
-    width: 50%; /* Set the desired width for the container */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    margin: 0 auto; /* Center the container horizontally */
-}
+
 
 button.selected {
     background-color: aquamarine;
