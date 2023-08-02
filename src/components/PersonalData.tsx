@@ -5,8 +5,7 @@ import PeopleType from "../types/PeopleType";
 import genderIcons from './img/gender';
 import peopleImage from './img/people';
 import fileImages from './img/films';
-import capitalise from "../utils/capitalise";
-import {Avatar, Box, Card, CardContent, CardHeader, Divider, Paper, Typography} from "@mui/material";
+import {Avatar, Box, Card, Divider, Paper, Typography} from "@mui/material";
 
 // Use the defined type for the data prop
 interface PropsType {
