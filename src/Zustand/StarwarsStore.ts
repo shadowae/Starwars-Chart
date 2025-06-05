@@ -6,10 +6,12 @@ import PeopleDemoData from "../mock/PeopleDemoData";
 import {fetchAllPeopleData} from "../API/getPeople";
 import PeopleType from "../types/PeopleType";
 import FilmsData from "../mock/FilmsData";
+import FilmType from "../types/FilmType";
 
 interface StarwarsState {
-    species: SpeciesType[],
-    people: PeopleType[]
+    species: SpeciesType[];
+    people: PeopleType[];
+    films: FilmType[];
 }
 
 const useStarwarsStore = create<StarwarsState>()(

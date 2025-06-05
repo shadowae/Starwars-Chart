@@ -4,6 +4,7 @@ import "./styles.css";
 import Home from "./Home";
 import Species from "./Species";
 import People from './People'
+import Films from './Films'
 import {
     AppBar,
     Box,
@@ -19,6 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
 import CategoryIcon from '@mui/icons-material/Category';
+import MovieIcon from '@mui/icons-material/Movie';
 interface ListItemLinkProps {
     icon?: React.ReactElement;
     primary: string;
@@ -80,6 +82,7 @@ export default function App() {
                                             <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
                                             <ListItemLink to="/species" primary="Species" icon={<CategoryIcon />} />
                                             <ListItemLink to="/people" primary="People" icon={<PeopleIcon />} />
+                                            <ListItemLink to="/films" primary="Films" icon={<MovieIcon />} />
                                         </List>
                                     </Box>
                                 </Drawer>
@@ -92,6 +95,7 @@ export default function App() {
                 <Routes>
                     <Route path="/species" element={<Species />} />
                     <Route path="/people" element={<People />} />
+                    <Route path="/films" element={<Films />} />
                     <Route path="/" element={<Home />} />
                 </Routes>
             </div>
